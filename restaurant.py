@@ -5,17 +5,26 @@ pizza={100:{"pizza pargherita":5 },
 print("pizzas")
 for i in pizza.keys():
         for j, m in pizza[i].items():
+            """
+            print pizzas
+            """
             print(str(i)+" . "+j+" "+str(m)+" $")
 casseroles={200:{"pasta casserole":8 },
            201:{"potato casserole":9}}
 print("casserole")
 for y in casseroles.keys():
     for n, z in casseroles[y].items():
+        """
+        print casseroles
+        """
         print(str(y)+" . "+n+" "+str(z)+" $")
 list=[]
 k=int(input("what would you like to order "))
 list.append(k)
 while True:
+    """
+    a loop that take the order
+    """
     k=int(input(""))
     if k in casseroles.keys() or k in  pizza.keys():
         list.append(k)
@@ -28,10 +37,16 @@ print("receipt")
 for l in list:
     if l in pizza.keys() :
         for j, m in pizza[l].items():
+            """
+            print only the pizzas that their ID was choose
+            """
             print(str(l)+" . "+j+" "+str(m)+" $")
             l1.append(m)
     elif l in casseroles.keys():
         for j, m in casseroles[l].items():
+            """
+            print only the casseroles that their ID was choose
+            """
             print(str(l)+" . "+j+" "+str(m)+" $")
             l1.append(m)
 total=sum(l1)
