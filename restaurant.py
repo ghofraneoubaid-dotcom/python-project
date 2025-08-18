@@ -1,54 +1,34 @@
 print("welcome to miro restaurant")
-pizza={100:{"pizza pargherita":5 },
-       101:{"pizza tuna":6},
-       102:{"pizza mushroom":7}}
-print("pizzas")
-for i in pizza.keys():
-        for j, m in pizza[i].items():
-            """
-            print pizzas
-            """
-            print(str(i)+" . "+j+" "+str(m)+" $")
-casseroles={200:{"pasta casserole":8 },
-           201:{"potato casserole":9}}
-print("casserole")
-for y in casseroles.keys():
-    for n, z in casseroles[y].items():
-        """
-        print casseroles
-        """
-        print(str(y)+" . "+n+" "+str(z)+" $")
-list=[]
-k=int(input("what would you like to order "))
-list.append(k)
-while True:
-    """
-    a loop that take the order
-    """
-    k=int(input(""))
-    if k in casseroles.keys() or k in  pizza.keys():
-        list.append(k)
-    elif k==0:
-         break
+from menu import menu
+
+for categorie in menu.keys():
+        print(categorie)
+        for ID , article_info in menu[categorie].items():
+            for article, price in article_info.items():
+                print( "   "+ ID +" . "+ article +" "+ str(price) +" $")
+
+
+order = []
+while categorie in menu.keys():
+    take_order = input("what would you like to order ")
+    if take_order in menu[categorie].keys():
+        order.append(take_order)
+    elif take_order == "0":
+        break
     else:
         print("sorry we don't offer that") 
-l1=[]
+
+prices_ordered = []
 print("receipt")
-for l in list:
-    if l in pizza.keys() :
-        for j, m in pizza[l].items():
-            """
-            print only the pizzas that their ID was choose
-            """
-            print(str(l)+" . "+j+" "+str(m)+" $")
-            l1.append(m)
-    elif l in casseroles.keys():
-        for j, m in casseroles[l].items():
-            """
-            print only the casseroles that their ID was choose
-            """
-            print(str(l)+" . "+j+" "+str(m)+" $")
-            l1.append(m)
-total=sum(l1)
-print("the total amount is: "+str(total))
+
+for order_ID in order:
+    for categorie in menu.keys():
+        if order_ID in menu[categorie].keys() :
+            for ID , article_info in menu[categorie].items():
+                for article, price in article_info.items():
+                    print(ID +" . "+ article +" "+ str(price) +" $")
+                    prices_ordered.append(price)
+
+total_price = sum(prices_ordered)
+print("the total amount is: "+str(total_price))
 print("thank you very much for your visit")
