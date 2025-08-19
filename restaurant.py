@@ -1,5 +1,6 @@
-print("welcome to miro restaurant")
 from menu import menu
+
+print("welcome to miro restaurant")
 
 for categorie in menu.keys():
         print(categorie)
